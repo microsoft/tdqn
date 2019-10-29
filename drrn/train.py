@@ -5,6 +5,7 @@ import torch
 import logger
 import argparse
 import yaml
+import jericho
 from os.path import basename, dirname
 from drrn import DRRN_Agent
 from vec_env import VecEnv
@@ -122,6 +123,7 @@ def start_redis():
     time.sleep(1)
 
 def main():
+    assert jericho.__version__ == '2.1.0', "This code is designed to be run with Jericho version 2.1.0."
     args = parse_args()
     print(args)
     configure_logger(args.output_dir)

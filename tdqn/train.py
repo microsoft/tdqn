@@ -1,5 +1,6 @@
 import os
 import argparse
+import jericho
 from tdqn import TDQN_Trainer
 
 def parse_args():
@@ -26,6 +27,7 @@ def parse_args():
 
 
 if __name__ == "__main__":
+    assert jericho.__version__ == '2.1.0', "This code is designed to be run with Jericho version 2.1.0."
     args = parse_args()
     print(args)
     trainer = TDQN_Trainer(args)
