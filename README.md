@@ -8,7 +8,7 @@ Install Dependencies:
 ```bash
 sudo apt-get install redis-server
 pip install -U spacy
-pip install jericho==???
+pip install jericho==2.1.0
 git clone https://github.com/microsoft/tdqn.git
 ```
 
