@@ -10,6 +10,7 @@ from os.path import basename, dirname
 from drrn import DRRN_Agent
 from vec_env import VecEnv
 from env import JerichoEnv
+from jericho.util import clean
 
 
 def configure_logger(log_dir):
@@ -36,7 +37,8 @@ def evaluate(agent, env, nb_episodes=1):
 
 def evaluate_episode(agent, env):
     step = 0
-    ob, rew, done, info = env.reset()
+    done = False
+    ob, info = env.reset()
     state = agent.build_state([ob], [info])[0]
     log('Obs{}: {} Inv: {} Desc: {}'.format(step, clean(ob), clean(info['inv']), clean(info['look'])))
     while not done:
@@ -137,7 +139,7 @@ def main():
 
 
 def interactive_run(env):
-    ob, reward, done, info = env.reset()
+    ob, info = env.reset()
     while True:
         print(clean(ob), 'Reward', reward, 'Done', done, 'Valid', info)
         ob, reward, done, info = env.step(input())
